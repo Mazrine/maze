@@ -92,19 +92,19 @@
           ALSA_CFLAGS = "-I${pkgs.alsa-lib.dev}/include";
         };
 
-        # Optional: if you want to build this as a package later
+        # Optional: to build this as a package later
         packages.default = pkgs.rustPlatform.buildRustPackage {
           pname = "mazrine-audio-synth";
           version = "0.1.0";
           
           src = ./.;
           
-          cargoHash = ""; # You'll need to fill this in later when packaging
+          cargoHash = ""; # need to fill this in later when packaging
           
           inherit nativeBuildInputs;
           buildInputs = audioLibs;
           
-          # Make sure pkg-config can find everything
+          # Making sure pkg-config can find everything
           PKG_CONFIG_PATH = "${pkgs.alsa-lib.dev}/lib/pkgconfig:${pkgs.libpulseaudio.dev}/lib/pkgconfig";
         };
       });

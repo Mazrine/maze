@@ -1,9 +1,9 @@
+// src/main.rs
 mod app;
 mod audio;
 mod ui;
 
-use app::App;
-
+// App::run() now handles initialization.
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    App::run()
+    app::App::new()?.run()
 }
