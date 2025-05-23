@@ -58,3 +58,8 @@ perf.data*
 # Audio device configs (these might be user-specific)
 audio-config.json
 device-config.json
+
+
+# Added by cargo
+
+/target

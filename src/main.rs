@@ -1,21 +1,9 @@
-use anyhow::Result;
-use crossterm::event::{self, Event};
-use maze_daw::app::DAWApp;
+mod app;
+mod audio;
+mod ui;
 
-fn main() -> Result<()> {
-    let mut terminal = ratatui::init();
-    let mut app = DAWApp::new()?;
+use app::App;
 
-    let result = loop {
-        terminal.draw(|frame| app.draw(frame))?;
-
-        if let Event::Key(key) = event::read()? {
-            if app.handle_key(key) {
-                break Ok(());
-            }
-        }
-    };
-
-    ratatui::restore();
-    result
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    App::run()
 }
